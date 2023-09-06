@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.fssa.crazyfitness.model.User;
 import com.fssa.crazyfitness.services.UserService;
 import com.fssa.crazyfitness.services.exceptions.ServiceException;
 
@@ -35,14 +37,16 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		UserService userService = new UserService();
-
+        User user = new User();
 		
 		PrintWriter out = response.getWriter();
 		
 		try {
 			if(userService.login(email, password)) {
+				user = userService.getUserbyEmail(email);
 				HttpSession session = request.getSession();
 				session.setAttribute("loggedInEmail", email);
+				session.setAttribute("userid", user.getUserId());
 				RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
 				dispatcher.forward(request, response);
 			}	

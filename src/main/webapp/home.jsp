@@ -11,7 +11,7 @@
 
 <%
 	String loggedInEmail = (String) session.getAttribute("loggedInEmail");
-	
+	int loggedUserId = (int) session.getAttribute("userid");
 	if(loggedInEmail == null) {
 		response.sendRedirect("login.jsp");
 	}
@@ -19,9 +19,10 @@
 %>
 
 <p>Logged In user: <%=loggedInEmail%> </p>
-<a href="GetAllUserServlet">Get all Users</a><br>
-<a href="LogoutServlet">logout</a><br>
-<a href="GetAllProductsServlet">Get all Products</a><br>
+<a href="GetAllUserServlet">Get all Users</a><br><br>
+<a href="LogoutServlet">logout</a><br><br>
+<a href="GetAllProductsServlet">Get all Products</a><br><br>
+<a href="UpdateUserServlet?id=<%=loggedUserId %>">Update User</a>
 
 </body>
 </html>

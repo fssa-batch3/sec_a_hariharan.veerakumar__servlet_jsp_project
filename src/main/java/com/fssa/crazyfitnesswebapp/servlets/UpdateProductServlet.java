@@ -23,12 +23,6 @@ import com.fssa.crazyfitness.services.exceptions.ServiceException;
 public class UpdateProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public UpdateProductServlet() {
-		super();
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -70,11 +64,6 @@ public class UpdateProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		PrintWriter out = response.getWriter();
-//		HttpSession session = request.getSession(false);
-//		session.setAttribute("ProductId",request.getParameter("id"));
-//		String loggedInEmail = (String) session.getAttribute("ProductId");
-//		out.println(loggedInEmail);
 		int id = Integer.parseInt(request.getParameter("product_id"));
 		String imageurl = request.getParameter("image_url");
 		String name = request.getParameter("product_name");
