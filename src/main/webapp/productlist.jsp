@@ -130,7 +130,7 @@ a{
 </head>
 <body>
     <h1>Product Cards</h1>
-    <a href="productform.html"><button>Create Product</button></a>
+    <a href="productform.jsp"><button>Create Product</button></a>
     <div class ="whole-div">
    <c:forEach var="product" items="${products}">
     <div class="sale-box">

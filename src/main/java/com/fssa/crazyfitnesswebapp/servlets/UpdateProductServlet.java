@@ -64,6 +64,7 @@ public class UpdateProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
 		int id = Integer.parseInt(request.getParameter("product_id"));
 		String imageurl = request.getParameter("image_url");
 		String name = request.getParameter("product_name");
@@ -75,12 +76,15 @@ public class UpdateProductServlet extends HttpServlet {
 		try {
 			productService.productUpdate(editProduct);
 			products = productService.getAllProductsList();
+			request.setAttribute("products", products);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("productlist.jsp");
+			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
 			e.printStackTrace();
+			out.println(e.getMessage());
+
 		}
-		request.setAttribute("products", products);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("productlist.jsp");
-		dispatcher.forward(request, response);
+
 	}
 
 }

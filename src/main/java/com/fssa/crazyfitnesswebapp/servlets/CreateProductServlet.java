@@ -48,7 +48,8 @@ public class CreateProductServlet extends HttpServlet {
 			}
 		} catch (ServiceException e) {
 			e.printStackTrace();
-			out.println("Invalid Product");
+			out.println(e.getMessage());
+
 
 		}
 
