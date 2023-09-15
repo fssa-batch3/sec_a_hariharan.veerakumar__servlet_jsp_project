@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fssa.crazyfitness.model.User;
 import com.fssa.crazyfitness.services.UserService;
@@ -27,34 +28,32 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+	
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
 		String StringAge = request.getParameter("age");
 		int age = Integer.parseInt(StringAge);
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String mobile_number = request.getParameter("phone");
-		String address = request.getParameter("address");
-		
-		
-		UserService userService = new UserService();
-		User user = new User(fname, lname, age, email, password, mobile_number, address);
+		String password = request.getParameter("pwsd");
+		String mobile_number = request.getParameter("ph_number");
 
+		UserService userService = new UserService();
+		User user = new User(fname, lname, age, email, password, mobile_number);
 		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
 
 		try {
 			if (userService.registerUser(user)) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-				dispatcher.forward(request, response);
+				session.setAttribute("loggedInEmail", email);
+				response.sendRedirect(request.getContextPath() + "/pages/home.html");
 			} else {
-				response.sendRedirect("register.jsp");
+				response.sendRedirect(request.getContextPath() + "/jsp/sign_in.jsp");
 			}
 		} catch (ServiceException e) {
 			e.printStackTrace();
-			out.println(e.getMessage());
-			String[] errorMessage = e.getMessage().split(":");
-			response.sendRedirect("register.jsp?errorMessage=" + errorMessage[1]); 
+
+
+
 		}
 
 	}

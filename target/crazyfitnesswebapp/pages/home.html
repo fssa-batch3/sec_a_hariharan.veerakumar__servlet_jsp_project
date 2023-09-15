@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crazy Fitness</title>
+
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./../assets/css/style.css" />
+    <link rel="stylesheet" href="./../assets/css/header.css" />
+    <link rel="stylesheet" href="./../assets/css/footer.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+</head>
+
+<body>
+    <!-- Nav starts -->
+    <nav class="navbar navbar-expand-lg" style="display: flex; justify-content: space-between">
+        <div class="container-fluid">
+            <div class="head-img">
+                <!-- logo of website -->
+                <img src="../assets/images/logo_100_days_website.png" alt="logo" />
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse head-profile" id="navbarTogglerDemo01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./../pages/home.html"
+                            style="border-bottom: solid 3px #00FFFF;">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./../pages/Home_workout.html">WORKOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/music.html">PLAYLIST</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/Sales.html">EQ SALE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/outfit.html">OUTFIT & SHOES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/profile.html">PROFILE</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- nav ends -->
+
+    <section id="hello" class="sec-1 container">
+        <div class="sec-1-img">
+            <!-- hero image -->
+            <img src="./../assets/images/hero_image.jpg" alt="bodybuilder image" />
+        </div>
+        <div class="sec-1-div">
+            <!-- Intro -->
+            <h1>FITNESS</h1>
+            <p>
+                Physical fitness is a state of health and well-being and, more specifically, the ability to perform
+                aspects of
+                sports, occupations and daily activities. Physical fitness is generally achieved through proper
+                nutrition,
+                moderate-vigorous physical exercise, and sufficient rest along with a formal recovery plan.Before the
+                Industrial
+                Revolution, fitness was defined as the capacity to carry out the day's activities without undue fatigue
+                or
+                lethargy. However, with automation and changes in lifestyles, physical fitness is now considered a
+                measure of
+                the body's ability to function efficiently and effectively in work and leisure activities, to be
+                healthy, to
+                resist hypokinetic diseases, improve immune system and to meet emergency situations.Fitness is defined
+                as the
+                quality or state of being fit and healthy. Around 1950, perhaps consistent with the Industrial
+                Revolution and
+                the treatise of World War II, the term "fitness" increased in western vernacular by a factor of ten. The
+                modern
+                definition of fitness describes either a person or machine's ability to perform a specific function or a
+                holistic definition of human adaptability to cope with various situations. This has led to an
+                interrelation of
+                human fitness and physical attractiveness that has mobilized global fitness and fitness equipment
+                industries.
+                Regarding specific function, fitness is attributed to persons who possess significant aerobic or
+                anaerobic
+                ability. A well-rounded fitness program improves a person in all aspects of fitness compared to
+                practicing only
+                one, such as only cardio/respiratory or only weight training.
+            </p>
+            <h2 style="
+            text-align: center;
+            padding-top: 40px;
+            font-size: 250%;
+            font-family: sans-serif;
+          ">
+                <!-- quote -->
+                <q>Train Like a Beast,Look Like a Beauty.</q>
+            </h2>
+            <!-- button -->
+            <a href="./../pages/sign_in.html"><button class="sec-1-btn"> Home Workout &#128170</button></a>
+            <!-- vedio -->
+
+            <img id="sec-1-gif" src="./../assets/images/GIF/intro.gif" alt="intro-gif" />
+        </div>
+        <br>
+        <div id="manage_user_div">
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="foot container">
+        <p>CONNECT WITH ME</p>
+        <div class="foot-div">
+            <button class="btns">
+                <img src="./../assets/images/Facebook_logo.png" alt="facebook logo" height="25" width="25" />
+            </button>
+            <button class="btns">
+                <img src="./../assets/images/Twitter_logo.png" alt="twitter logo" height="25" width="25" />
+            </button>
+            <button class="btns">
+                <img src="./../assets/images/Linked_in_logo.png" alt="linked in logo" height="25" width="25" />
+            </button>
+            <button class="btns">
+                <img src="./../assets/images/Whatsapp_logo.png" alt="whatsapp logo" height="25" width="25" />
+            </button>
+            <button class="btns">
+                <img src="./../assets/images/Instagram_logo.png" alt="instagram logo" height="25" width="25" />
+            </button>
+        </div>
+        <p id="foot-p">&#169; Copyrights Claimed by Hariharan</p>
+    </footer>
+
+    <!-- Java script -->
+    <!-- fire base -->
+    <!-- <script type="module"> -->
+
+    <!-- Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+    import { getDatabase, ref, onValue, } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+    Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyCTterdzTDASQ8ZcU5Ez4XJmqrp0Sy6tSA",
+    authDomain: "hariharan-d4817.firebaseapp.com",
+    projectId: "hariharan-d4817",
+    storageBucket: "hariharan-d4817.appspot.com",
+    messagingSenderId: "754024259347",
+    appId: "1:754024259347:web:648cfa9e2842c7612304e6"
+    };
+
+    Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase();
+    console.log(database);
+
+    const db_ref = ref(database, 'name/');
+    onValue(db_ref, (snapshot) => {
+    const data = snapshot.val();
+    console.log(data);
+
+    }) -->
+
+
+    <!--  </script> -->
+    <script src="./../assets/js/index.js"></script>
+    <script>
+        let div_user_management = document.getElementById("manage_user_div");
+        let manage_div = `
+        <a href="./../pages/user_management.html">
+                <button class="user_manage">
+                    <span>Manage user</span>
+                    <i></i>
+                </button></a>
+        `;
+        if (admin_email == "hari@gmail.com") {
+            div_user_management.innerHTML = manage_div;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
