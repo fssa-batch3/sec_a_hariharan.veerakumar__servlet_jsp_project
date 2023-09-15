@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 <style>
  body {
-      background-image: url(../assets/images/sign_up_backimage.jpg);
+      background-image: url(./../assets/images/sign_up_backimage.jpg);
       background-repeat: no-repeat;
       background-size: 100vw 100vh;
       color: rgb(224, 172, 105);

@@ -51,7 +51,12 @@ public class RegisterServlet extends HttpServlet {
 			}
 		} catch (ServiceException e) {
 			e.printStackTrace();
-
+            String[] errorMessage = e.getMessage().split(":");
+            request.setAttribute("RegisterUser", user);
+            request.setAttribute("errormessage", errorMessage[1]);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/sign_in.jsp");
+            dispatcher.forward(request, response);
+//            response.sendRedirect(request.getContextPath()+"/jsp/sign_in.jsp");
 
 
 		}

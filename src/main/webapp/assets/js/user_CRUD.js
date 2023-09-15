@@ -5,10 +5,10 @@ signUp.addEventListener("submit", function(event) {
 	event.preventDefault();
 	// Declaring variables
 	//  let otp_div = document.querySelector(".card")
-//	let fname = document.getElementById("fname").value.trim();
-	//let lname = document.getElementById("lname").value.trim();
+	let fname = document.getElementById("fname").value.trim();
+	let lname = document.getElementById("lname").value.trim();
 	let age = document.getElementById("age").value.trim();
-	//let email = document.getElementById("email").value.trim();
+	let email = document.getElementById("email").value.trim();
 	let password = document.getElementById("password").value.trim();
 	let conpassword = document.getElementById("conpwd").value.trim();
 	let ph_num = document.getElementById("ph_num").value.trim();
@@ -43,22 +43,48 @@ signUp.addEventListener("submit", function(event) {
   <br>
   <center><b>Thank you!</b></center>
   `; */
-
-
+  
+// name regex pattern and checking 
+	const namePattern = "[a-zA-Z]{3,15}$";
+	const fnameMatches = fname.match(namePattern);
+	const lnameMatches = lname.match(namePattern);
+	// email regex pattern and checking 
+	const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+	const emailMatches = email.match(emailPattern);
+	// password regex pattern and checking
+	const passwordPattern = "^[a-zA-Z0-9!@#$%^&*]{8,}$";
+    const passwordMatches = password.match(passwordPattern);
 	if (ph_num.length != 10) {
-		window.alert("Please! number must be 10 digits");
+		Notify.error("Please enter 10 digits mobile number");
+		return;
 	}
 	if (isNaN(age) || age < 14 || age > 64) {
 		Notify.error("The age must be a number between 12 and 64");
-		
+		return;
 	}
 	if (password != conpassword) {
-		Notify.error("Confirm password looks not similar to Password")
+		Notify.error("Confirm password looks not similar to Password");
+		return;
+	}
+	if (!fnameMatches) {
+		Notify.error("First name should contain alphabetic letters and atleast 3 letters should be there maximum 15");
+		return;
+	}
+	if (!lnameMatches) {
+		Notify.error("Last name should contain alphabetic letters and atleast 3 letters should be there maximum 15");
+		return;
+	}
+	if (!emailMatches) {
+		Notify.error("Incorrect email format. Please enter a valid email address.");
+		return;
+	}
+    if(!passwordMatches){
+		Notify.error("Password should contain a Uppercase and a Lowercase and a Special character and a numeric value and atleast 8 in required");
+		return;
 	}
 
 	signUp.submit();
-	console.log("Form submitted");
-	
+
 });
 /*  let sign_user_data = {
 	  "id": id,
@@ -148,5 +174,5 @@ function createUser(email, ebody, otp_div, sign_user_data) {
 	  console.error(error);
 	  return false
   }
-}*/ 
+}*/
 
