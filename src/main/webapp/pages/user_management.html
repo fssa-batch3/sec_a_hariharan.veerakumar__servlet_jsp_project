@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRAZY FITNESS</title>
+    <link rel="stylesheet" href="./../assets/css/user_manage.css">
+</head>
+
+<body>
+    <h1>USER MANAGEMENT</h1>
+    <div>
+
+        <table class="container" id="container">
+
+
+
+
+        </table>
+    </div>
+    <!-- java script -->
+    <script>
+        const user_details = JSON.parse(localStorage.getItem("usersdetails"));
+        console.log(user_details);
+
+
+
+
+
+        const full_table = document.getElementById("container");
+
+        let table = `
+        <a href="./../pages/home.html" id="back_a"> Back</a>
+
+        <tr class="table_heading">
+                <th>Email</th>
+                <th>Firstname</th>            
+                <th>Age</th>
+                <th>Mobile</th>
+            </tr>
+            <br>`;
+
+        for (let i = 0; i < user_details.length; i++) {
+            let id = user_details[i]["id"];
+            let email = user_details[i]["user_email"];
+            let first_name = user_details[i]["user_name"];
+            let last_name = user_details[i]["user_lastname"];
+            let age = user_details[i]["user_age"];
+            let mobile = user_details[i]["user_ph_num"];
+
+            table += `
+    <tr>
+        <td> <a href="./../pages/delete_user.html?id=${id}" class="delete_a">${email} </a></td>
+        <td>${first_name} ${last_name}</td>   
+        <td>${age}</td>
+        <td>${mobile}</td>
+    </tr>`;
+        }
+
+        full_table.innerHTML = table;
+
+
+
+    </script>
+</body>
+
+</html>

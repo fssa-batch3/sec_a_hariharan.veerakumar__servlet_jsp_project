@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRAZY FITNESS</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .button {
+            background-color: rgb(252, 5, 5);
+            color: rgb(248, 248, 248);
+            width: 300px;
+            border: 2px solid #555555;
+            height: 80px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 30px;
+            margin: 4px 2px;
+            -webkit-transition-duration: 0.4s;
+            /* Safari */
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #555555;
+            color: white;
+        }
+
+        .button:hover {
+            background-color: #555555;
+            color: white;
+        }
+
+
+        /*Bounce*/
+        @keyframes kreep {
+            0% {
+                -webkit-transform: scale(1.1, .9);
+                transform: scale(1.1, .9);
+            }
+
+            50% {
+                -webkit-transform: scale(.9, 1.1) translateY(-.5rem)
+            }
+
+            70% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+
+        h1.kreep {
+            display: inline-block;
+            /*name-duration-function(ease,eas-in,linear)-delay-count-direction */
+            animation: kreep 0.7s ease 2s infinite alternate;
+        }
+
+        h1.kreep:hover {
+            animation: none;
+        }
+
+        .delete_button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 23%;
+        }
+
+        #back_a {
+
+            width: 100px;
+            background-color: #00ffff;
+            font-size: 30px;
+            text-decoration: none;
+            color: #000;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+
+        .back_div {
+            margin-top: 450px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="delete_button">
+        <h1 class="kreep">
+            <button class="button button5" id="delete">Delete</button>
+        </h1>
+    </div>
+    <div class="back_div"><a href="./../pages/user_management.html" id="back_a">
+            < Back</a>
+    </div>
+
+
+    <!-- javascript -->
+    <script>
+        const users = JSON.parse(localStorage.getItem("usersdetails"));
+        console.log(users);
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const id = urlParams.get('id');
+
+
+        let user_object = users.find(function (event) {
+            let check_id = event["id"];
+            if (id == check_id) {
+                return true;
+            }
+        })
+
+
+
+
+        let Delete = document.getElementById("delete");
+        Delete.addEventListener("click", function (event) {
+            event.preventDefault();
+            let index = users.indexOf(user_object);
+
+            let message = confirm("Are you sure want to delete this account");
+            if (message !== true) {
+                return;
+            }
+            else {
+                users.splice(index, 1);
+                localStorage.setItem("usersdetails", JSON.stringify(users))
+                window.location.href = "./../pages/user_management.html";
+            }
+        })
+    </script>
+</body>
+
+</html>
