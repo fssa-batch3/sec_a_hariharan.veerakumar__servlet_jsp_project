@@ -1,0 +1,111 @@
+body {
+  color: #00FFFF;
+  background-color: #050202;
+}
+
+.head {
+	 color: #00FFFF;
+   background-color: #050202;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 10%;
+}
+.head-img {
+  width: 40%;
+  margin: auto 0 auto 0;
+
+}
+.head-img img {
+  width: 100%; 
+  background-color: transparent;
+}
+
+.head-profile {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  width: 100%;
+  font-weight: bold;
+}
+.head-profile ul {
+  /* background-color: blue; */
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.head-profile a {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: aqua;
+  transition: 0.2s;
+}
+.head-profile a:hover {
+  color: white;
+  transform: scale(1.1);
+}
+.navbar-toggler {
+  background-color: aqua;
+  color: #050202;
+}
+.head-about {
+  cursor: pointer;
+  height: 25px;
+  color: aqua;
+  border: none;
+  background-color: #050202;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  transition: transform 0.2s;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.head-about:hover {
+  transform: scale(1.2);
+  color: white;
+}
+.navlinks{
+margin-left: 42%;
+	
+}
+.nav-link{
+	margin-left:60px;
+	
+}
+    .ba_btn {
+      position: relative;
+      font-family: 'Heebo', sans-serif;
+      padding: 12px 40px;
+      border: 1px solid aqua;
+      color: #000;
+      font-weight: 500;
+      font-size: 1em;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+    
+    .ba_btn:hover {
+      text-shadow: 0px 5px 10px #00FFFF;
+      transform: scale(1.01);
+      box-shadow: inset 0px 0px 10px #00FFFF;
+    }
+    
+    .ba_btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100px;
+      width: 50%;
+      height: 100%;
+      transform: rotate(80deg);
+      background: #FFFFFF;
+      filter: blur(10px);
+      transition: 0.6s ease-in-out;
+    }
+    
+    .ba_btn:hover::after {
+      left: 100%;
+    }
