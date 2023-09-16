@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			if (userService.registerUser(user)) {
 				session.setAttribute("loggedInEmail", email);
-				response.sendRedirect(request.getContextPath() + "/pages/home.html");
+				response.sendRedirect(request.getContextPath() + "/pages/Home_workout.html");
 			} else {
 				response.sendRedirect(request.getContextPath() + "/jsp/sign_in.jsp");
 			}
@@ -56,7 +56,6 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("errormessage", errorMessage[1]);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/sign_in.jsp");
             dispatcher.forward(request, response);
-//            response.sendRedirect(request.getContextPath()+"/jsp/sign_in.jsp");
 
 
 		}
