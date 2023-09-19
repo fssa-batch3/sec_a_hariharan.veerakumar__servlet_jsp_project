@@ -1,0 +1,12 @@
+com\fssa\crazyfitnesswebapp\servlets\CreateProductServlet.class
+com\fssa\crazyfitnesswebapp\servlets\GetAllProductsServlet.class
+com\fssa\crazyfitnesswebapp\servlets\GetAllUserServlet.class
+com\fssa\crazyfitnesswebapp\servlets\ExerciseCategoryServlet.class
+com\fssa\crazyfitnesswebapp\servlets\DeleteUserServlet.class
+com\fssa\crazyfitnesswebapp\servlets\RegisterServlet.class
+com\fssa\crazyfitnesswebapp\servlets\DeleteProductServlet.class
+com\fssa\crazyfitnesswebapp\servlets\UpdateUserServlet.class
+com\fssa\crazyfitnesswebapp\servlets\GetAllProductsJSONServlet.class
+com\fssa\crazyfitnesswebapp\servlets\LoginServlet.class
+com\fssa\crazyfitnesswebapp\servlets\UpdateProductServlet.class
+com\fssa\crazyfitnesswebapp\servlets\LogoutServlet.class

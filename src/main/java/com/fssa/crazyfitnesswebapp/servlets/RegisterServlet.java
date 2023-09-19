@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			if (userService.registerUser(user)) {
 				session.setAttribute("loggedInEmail", email);
-				response.sendRedirect(request.getContextPath() + "/pages/Home_workout.html");
+				response.sendRedirect(request.getContextPath() + "/jsp/home_workout.jsp");
 			} else {
 				response.sendRedirect(request.getContextPath() + "/jsp/sign_in.jsp");
 			}

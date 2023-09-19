@@ -42,6 +42,9 @@ function createCard(ar,selector) {
         steps.innerText = ar[i]["steps"];
         left_div.append(steps);
         
+        
+        
+        
         let right_div = document.createElement("div");
         right_div.setAttribute("class", "right");
         exercise_div.append(right_div);

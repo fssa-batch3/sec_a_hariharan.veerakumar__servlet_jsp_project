@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 <style>
  body {
-      background-image: url(../assets/images/sign_up_backimage.jpg);
+      background-image: url(./../assets/images/sign_up_backimage.jpg);
       background-repeat: no-repeat;
       background-size: 100vw 100vh;
       color: rgb(224, 172, 105);
@@ -155,13 +155,12 @@
       <div>
         <label for="email" class="form-label">Email address:</label>
         <input type="email" class="form-control" id="email" placeholder="Enter your E-mail" required
-          title="Enter your email properly" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" value="hariharan.veerakumar@fssa.freshworks.com"  />
+          title="Enter your email properly" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"   />
       </div>
       <!-- password -->
       <div class="icon_div">
         <label for="password" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter your Password" required
-           value="HariPassword@10" name="password" title="password must be in 8 characters" />
+        <input type="password" class="form-control" id="password" placeholder="Enter your Password" required name="password" title="password must be in 8 characters" />
         <i class="fa fa-eye" id="togglePassword"></i>
       </div>
       <!-- middle -->
