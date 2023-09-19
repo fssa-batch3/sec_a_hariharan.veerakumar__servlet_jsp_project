@@ -100,7 +100,6 @@
   </footer>
   <!-- Java script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
  
 </body>
 
