@@ -2,18 +2,24 @@
 <head>
 
 <!-- Bootstrap  -->
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/style.css" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
+
 <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/header.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/footer.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg "
-		style="display: flex; justify-content: space-between">
+		>
 	<%
 	String loggedInEmail = (String) session.getAttribute("loggedInEmail");
 	if (loggedInEmail == null) {
@@ -21,10 +27,10 @@
 	<!-- Nav starts -->
 
 		<div class="container">
-			<div class="head-img">
+			<div class="head-img" style= "width:100%;">
 				<!-- logo of website -->
 				<a href="<%=request.getContextPath()%>/index.jsp"> <img
-					src="<%=request.getContextPath()%>/assets/images/logo_100_days_website.png" alt="logo" style="width:350px;"/></a>
+					src="<%=request.getContextPath()%>/assets/images/logo_100_days_website.png" alt="logo"/></a>
 			</div>
 			<br>
 			<div class="collapse navbar-collapse head-profile navlinks"
@@ -48,11 +54,11 @@
 	%>
 	<!-- Nav starts -->
 
-		<div class="container-fluid">
+		<div class="container">
 			<div class="head-img">
 				<!-- logo of website -->
-				<a href="index.jsp"> <img
-					src="<%=request.getContextPath()%>/assets/images/logo_100_days_website.png" alt="logo" /></a>
+			 <img
+					src="<%=request.getContextPath()%>/assets/images/logo_100_days_website.png" alt="logo" />
 			</div>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
@@ -67,7 +73,7 @@
 						href="<%=request.getContextPath()%>/pages/home.html"
 						style="border-bottom: solid 3px #00FFFF;">HOME</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="<%=request.getContextPath()%>/pages/Home_workout.html">WORKOUT</a></li>
+						href="<%=request.getContextPath()%>/jsp/home_workout.jsp">WORKOUT</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="<%=request.getContextPath()%>/pages/music.html">PLAYLIST</a></li>
 					<li class="nav-item"><a class="nav-link"

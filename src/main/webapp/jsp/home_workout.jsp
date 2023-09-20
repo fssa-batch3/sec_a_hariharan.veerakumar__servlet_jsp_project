@@ -59,7 +59,7 @@
   <!-- nav ends -->
   <section class="sec-1">
     <h1 id="heading">Home Workout</h1> 
- 
+     <a href="<%=request.getContextPath() %>/jsp/create_exercise.jsp" class="btn btn-success add">+ Add Exercise </a>
     <!-- Part-1-->
     <a href="<%=request.getContextPath()%>/ExerciseCategoryServlet?category=FULLBODY" >
       <div class="workout-div">
@@ -114,8 +114,8 @@
         <img src="<%=request.getContextPath()%>/assets/images/Leg.jpg" alt="leg image" />
       </div>
     </a>
-     <br/> <br/>
-    <a href="<%=request.getContextPath() %>/jsp/create_exercise.jsp" class="btn btn-success add">+ Add Exercise </a>
+ 
+
  
   </section>
   <!-- footer-->

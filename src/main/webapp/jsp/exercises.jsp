@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +16,13 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/footer.css" />
+	  <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/header.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/mvp_content.css" />
 </head>
 <body>
-
-	<jsp:include page="../jsp/header.jsp"></jsp:include>
+	 	<jsp:include page="../jsp/header.jsp"></jsp:include>
+	<br />
 	<!-- searchbar -->
 	<div class="search">
 		<input type="text" class="input" placeholder="Search..."
@@ -69,7 +71,9 @@
 					</p>
 					<p>
 						<c:out value='${exercise.exerciseSteps}' />
-					</p>
+					</p>		
+						<a href="<%=request.getContextPath() %>/UpdateExerciseServlet?id=<c:out value='${exercise.exerciseId}' />" class="btn btn-warning">Edit</a>
+					<br />
 				</div>
 			</div>
 		</c:forEach>
@@ -87,23 +91,23 @@
 		<p>CONNECT WITH ME</p>
 		<div class="foot-div">
 			<button class="btns">
-				<img src="../assets/images/Facebook_logo.png" alt="facebook logo"
+				<img src="<%=request.getContextPath() %>/assets/images/Facebook_logo.png" alt="facebook logo"
 					height="25" width="25" />
 			</button>
 			<button class="btns">
-				<img src="../assets/images/Twitter_logo.png" alt="twitter logo"
+				<img src="<%=request.getContextPath() %>/assets/images/Twitter_logo.png" alt="twitter logo"
 					height="25" width="25" />
 			</button>
 			<button class="btns">
-				<img src="../assets/images/Linked_in_logo.png" alt="linked in logo"
+				<img src="<%=request.getContextPath() %>/assets/images/Linked_in_logo.png" alt="linked in logo"
 					height="25" width="25" />
 			</button>
 			<button class="btns">
-				<img src="../assets/images/Whatsapp_logo.png" alt="whatsapp logo"
+				<img src="<%=request.getContextPath() %>/assets/images/Whatsapp_logo.png" alt="whatsapp logo"
 					height="25" width="25" />
 			</button>
 			<button class="btns">
-				<img src="../assets/images/Instagram_logo.png" alt="Instagram logo"
+				<img src="<%=request.getContextPath() %>/assets/images/Instagram_logo.png" alt="Instagram logo"
 					height="25" width="25" />
 			</button>
 		</div>

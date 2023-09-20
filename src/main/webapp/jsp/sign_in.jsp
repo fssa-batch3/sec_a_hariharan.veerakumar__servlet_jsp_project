@@ -409,14 +409,14 @@ a {
 					maxlength="10">
 			</div>
 			<!-- log in  -->
-			<a href="<%=request.getContextPath()%>/pages/Log_in.html"
+			<a href="<%=request.getContextPath()%>/jsp/login.jsp"
 				id="fr_pass">Already log in?</a>
 			<!-- submit -->
 			<div class=" d-sm-block ">
 				<button id="button" type="submit" class="btn">Sign up</button>
 				<br> <br> <br>
 				<!-- Back button -->
-				<a class="back_btn" href="<%=request.getContextPath()%>/jsp/index.jsp">
+				<a class="back_btn" href="<%=request.getContextPath()%>/index.jsp">
 					<span> GO BACK </span>
 					<div class="top"></div>
 					<div class="left"></div>

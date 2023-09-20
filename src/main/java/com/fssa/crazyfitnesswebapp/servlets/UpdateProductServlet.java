@@ -36,20 +36,13 @@ public class UpdateProductServlet extends HttpServlet {
 		int id = 0;
 		if (idParam != null) {
 		     id = Integer.parseInt(idParam);
-		    System.out.println("Received id: " + id);
-		    out.println("Received id: " + id);
-		} else {
-		    System.out.println("No id parameter found in the URL.");
-		    out.println("No id parameter found in the URL.");
-		}
+		} 
 		ProductService productService = new ProductService();
 		Product product =new Product();
 		try {
-			out.println("in try");
 			product = productService.getProductById(id);
 			out.println("success");
 		} catch (ServiceException e) {
-			out.println(e.getMessage());
 			e.printStackTrace();
 		}
 		request.setAttribute("editProduct", product);
