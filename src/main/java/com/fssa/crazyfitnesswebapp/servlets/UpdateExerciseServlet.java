@@ -80,7 +80,11 @@ public class UpdateExerciseServlet extends HttpServlet {
 
 		} catch (ServiceException e) {
 			e.printStackTrace();
-			out.println(e.getMessage());
+			String[] errorMessage = e.getMessage().split(":");
+			request.setAttribute("exercise_details", exercise);
+			request.setAttribute("errormessage", errorMessage[1]);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateexerciseform.jsp");
+            dispatcher.forward(request, response);
 		}
 	}
 

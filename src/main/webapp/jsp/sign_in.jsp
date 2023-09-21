@@ -302,7 +302,6 @@ a {
 </head>
 
 <body>
-<body>
 
 	<%
 	User user = (User) request.getAttribute("RegisterUser");

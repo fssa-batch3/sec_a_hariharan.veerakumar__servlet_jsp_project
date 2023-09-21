@@ -39,7 +39,6 @@ public class RegisterServlet extends HttpServlet {
 
 		UserService userService = new UserService();
 		User user = new User(fname, lname, age, email, password, mobile_number);
-		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 
 		try {

@@ -29,7 +29,7 @@ public class CreateExerciseServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		PrintWriter out = response.getWriter();
+
 		String name = request.getParameter("ex_name");
 		String image = request.getParameter("ex_image");
 		int time = Integer.parseInt(request.getParameter("ex_time"));
@@ -43,15 +43,15 @@ public class CreateExerciseServlet extends HttpServlet {
 			if (exerciseService.createExercise(exercise)) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/home_workout.jsp");
 				dispatcher.forward(request, response);
-			} else {
-				out.println("Exercise is not added");
-				response.sendRedirect("jsp/create_exercise.jsp");
-			}
+			} 
 
 		} catch (ServiceException e) {
 			e.printStackTrace();
-			out.println(e.getMessage());
-
+			String[] errorMessage = e.getMessage().split(":");
+            request.setAttribute("ExerciseDetails", exercise);
+			request.setAttribute("errormessage", errorMessage[1]);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/create_exercise.jsp");
+            dispatcher.forward(request, response);
 		}
 
 	}

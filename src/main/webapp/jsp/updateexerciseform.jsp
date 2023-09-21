@@ -35,43 +35,80 @@
     </style>
 </head>
 <body>
+
+	<%
+	Exercise exercise = (Exercise) request.getAttribute("exercise_details");
+	String errormessage = (String) request.getAttribute("errormessage");
+	Exercise exercises = (Exercise) request.getAttribute("editExercise");
+
+	String name;
+	String image;
+	int time;
+	String steps;
+	String type;
+	int id;
+
+	if (exercise != null) {
+		name = exercise.getExerciseName();
+		image = exercise.getExerciseImage();
+		time = exercise.getExerciseTiming();
+		steps = exercise.getExerciseSteps();
+		type = exercise.getExerciseCategory();
+		id = exercise.getExerciseId();
+	} else {
+		name = exercises.getExerciseName();
+		image = exercises.getExerciseImage();
+		time = exercises.getExerciseTiming();
+		steps = exercises.getExerciseSteps();
+		type = exercises.getExerciseCategory();
+		id = exercises.getExerciseId();
+	}
+
+	if (errormessage != null && !errormessage.isEmpty()) {
+	%>
+	<script>
+        window.alert("<%=errormessage%>");
+	</script>
+<%
+	}
+	%>
     <br>
     <div class=" mb-3 form-control container">
         <form id="form" action="<%=request.getContextPath() %>/UpdateExerciseServlet" method="post">
 
             <h1>Update Exercise</h1>
-<%Exercise exercise = (Exercise) request.getAttribute("editExercise"); %>
+
             <!-- div 1 -->
             <div>
                 <label for="text" class="form-label">Name</label>
-                <input id="ex_name" type="text" name="ex_name" value="<%=exercise.getExerciseName() %>" class="form-control" required />
+                <input id="ex_name" type="text" name="ex_name" value="<%=name %>" class="form-control" required />
             </div>
             <br>
             <!-- div 2 -->
             <div>
                 <label for="text" class="form-label">Image</label>
                 <input id="ex_img" type="text" class="form-control"
-                    name="ex_image" value="<%=exercise.getExerciseImage() %>" required />
+                    name="ex_image" value="<%=image %>" required />
             </div>
             <br>
             <!-- div 3 -->
             <div>
                 <label for="number" class="form-label">Times</label>
-                <input id="ex_times" type="number" name="ex_time" min = "5"
-                class="form-control" value="<%=exercise.getExerciseTiming() %>"  required />
+                <input id="ex_times" type="number" name="ex_time" min = "5" max= "30"
+                class="form-control" value="<%=time %>"  required />
             </div>
             <br>
             <!-- div 4 -->
             <div>
                 <label for="text" class="form-label"> Steps</label>
-                <textarea class="form-control" rows="5" id="ex_steps"  name="ex_steps" required><%=exercise.getExerciseSteps() %></textarea>
+                <textarea class="form-control" rows="5" id="ex_steps"  name="ex_steps" required><%=steps %></textarea>
             </div>
             <br>
             <!-- div 5 -->
             <div>
                 <label for="section" class="form-label">Type </label>
                 <select id="type" class="form-control" name="ex_category"  required>
-                    <option value="<%=exercise.getExerciseCategory() %>"><%=exercise.getExerciseCategory() %></option>
+                    <option value="<%=type %>"><%=type %></option>
                     <option value="FULLBODY">FULLBODY</option>
                     <option value="LOWERBODY">LOWERBODY</option>
                     <option value="ABS">ABS</option>
@@ -81,7 +118,7 @@
                     <option value="LEG">LEG</option>
                 </select>
             </div>
-            <input type="hidden" name="id" value="<%= exercise.getExerciseId()%>"> 
+            <input type="hidden" name="id" value="<%=id%>"> 
             <br>
             <!-- Button -->
             <div class="d-grid container">
@@ -92,7 +129,7 @@
         <div class="container delete">
         <h3> Do you want to delete this exercise ? </h3>
         <br>
-        <a href="<%=request.getContextPath() %>/DeleteExerciseServlet?id=<%=exercise.getExerciseId() %>"><button class="btn btn-danger"> Delete </button></a>
+        <a href="<%=request.getContextPath() %>/DeleteExerciseServlet?id=<%=id %>"><button class="btn btn-danger"> Delete </button></a>
          </div>
         <!-- Back button -->
         <div class="row">
