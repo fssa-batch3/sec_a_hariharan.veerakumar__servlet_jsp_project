@@ -22,38 +22,11 @@
 		>
 	<%
 	String loggedInEmail = (String) session.getAttribute("loggedInEmail");
-	if (loggedInEmail == null) {
+	Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+	if (loggedInEmail != null  || isAdmin != null && isAdmin) {
 	%>
 	<!-- Nav starts -->
-
-		<div class="container">
-			<div class="head-img" style= "width:100%;">
-				<!-- logo of website -->
-				<a href="<%=request.getContextPath()%>/index.jsp"> <img
-					src="<%=request.getContextPath()%>/assets/images/logo_100_days_website.png" alt="logo"/></a>
-			</div>
-			<br>
-			<div class="collapse navbar-collapse head-profile navlinks"
-				id="navbarTogglerDemo01 ">
-					
-					
-					<a class="nav-link ba_btn" href="<%=request.getContextPath()%>/jsp/login.jsp">Login</a>
-					
-					
-					<a class="nav-link ba_btn" href="<%=request.getContextPath()%>/jsp/sign_in.jsp">Sign Up</a>
-				
-				
-				</div>
-
-		</div>
-
-	<!-- nav ends -->
-
-	<%
-	} else {
-	%>
-	<!-- Nav starts -->
-
+	
 		<div class="container">
 			<div class="head-img">
 				<!-- logo of website -->
@@ -87,6 +60,35 @@
 			</div>
 		</div>
 	
+
+
+	<!-- nav ends -->
+
+	<%
+	} else {
+	%>
+	<!-- Nav starts -->
+
+		<div class="container">
+			<div class="head-img" style= "width:100%;">
+				<!-- logo of website -->
+				<a href="<%=request.getContextPath()%>/index.jsp"> <img
+					src="<%=request.getContextPath()%>/assets/images/logo_100_days_website.png" alt="logo"/></a>
+			</div>
+			<br>
+			<div class="collapse navbar-collapse head-profile navlinks"
+				id="navbarTogglerDemo01 ">
+					
+					
+					<a class="nav-link ba_btn" href="<%=request.getContextPath()%>/jsp/login.jsp">Login</a>
+					
+					
+					<a class="nav-link ba_btn" href="<%=request.getContextPath()%>/jsp/sign_in.jsp">Sign Up</a>
+				
+				
+				</div>
+
+		</div>
 
 
 	<%

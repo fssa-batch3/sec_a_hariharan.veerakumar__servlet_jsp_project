@@ -32,26 +32,33 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		UserService userService = new UserService(); 
+		UserService userService = new UserService();
 		HttpSession session = request.getSession(false);
 
 		PrintWriter out = response.getWriter();
 
 		try {
-			if (userService.login(email, password)) {
-				User user = userService.getUserbyEmail(email);
-				session.setAttribute("loggedInEmail", email);
-				session.setAttribute("userid", user.getUserId());
-				//response.sendRedirect(request.getContextPath() +"/pages/Home_workout.html");
-				response.sendRedirect(request.getContextPath() +"/jsp/home_workout.jsp");
-
-
+			if (email.equals("hari10@gmail.com") && password.equals("Haripassword@10")) {
+				HttpSession adminSession = request.getSession();
+				adminSession.setAttribute("isAdmin", true);
+				// Send JavaScript code to display an alert
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Welcome Admin!');");
+				out.println("setTimeout(function() { window.location.href = '" + request.getContextPath() + "/jsp/home_workout.jsp'; }, 1000);"); // Delay for 1 second (1000 milliseconds)
+				out.println("</script>");
+			} else {
+				if (userService.login(email, password)) {
+					User user = userService.getUserbyEmail(email);
+					session.setAttribute("loggedInEmail", email);
+					session.setAttribute("userid", user.getUserId());
+					response.sendRedirect(request.getContextPath() + "/jsp/home_workout.jsp");
+				}
 			}
 		} catch (ServiceException e) {
 			e.printStackTrace();
 			out.println(e.getMessage());
-			 String[] errorMessage = e.getMessage().split(":");
-			 response.sendRedirect(request.getContextPath()+"/jsp/login.jsp?errorMessage=" + errorMessage[1]);
+			String[] errorMessage = e.getMessage().split(":");
+			response.sendRedirect(request.getContextPath() + "/jsp/login.jsp?errorMessage=" + errorMessage[1]);
 
 		}
 

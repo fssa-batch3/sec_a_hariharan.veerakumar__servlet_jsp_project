@@ -71,8 +71,19 @@
 					</p>
 					<p>
 						<c:out value='${exercise.exerciseSteps}' />
-					</p>		
+					</p>	
+					<%
+					Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+				    if(isAdmin != null && isAdmin){
+					%>	
 						<a href="<%=request.getContextPath() %>/UpdateExerciseServlet?id=<c:out value='${exercise.exerciseId}' />" class="btn btn-warning">Edit</a>
+					<%
+				    }else{
+					%>
+					<a href="<%=request.getContextPath() %>/AssignUserExerciseServlet?id=<c:out value='${exercise.exerciseId}' />" class="btn btn-primary">Assign</a>
+					<%
+					}
+					%>
 					<br />
 				</div>
 			</div>

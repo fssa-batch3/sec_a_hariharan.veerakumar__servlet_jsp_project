@@ -49,8 +49,11 @@
   border: 0.2px solid aqua;
 }
 .add{
-	margin-left:75% ;
+    background-color: #00FFFF;
+    margin-left: 85%;
     width: 10%;
-	
-	
+    font-weight: 600;
+}
+.add:hover{
+	border: 1px solid #00FFFF;	
 }

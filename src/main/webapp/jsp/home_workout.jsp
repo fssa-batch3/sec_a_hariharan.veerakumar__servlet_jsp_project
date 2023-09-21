@@ -59,7 +59,18 @@
   <!-- nav ends -->
   <section class="sec-1">
     <h1 id="heading">Home Workout</h1> 
-     <a href="<%=request.getContextPath() %>/jsp/create_exercise.jsp" class="btn btn-success add">+ Add Exercise </a>
+    <% 
+	Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+    if(isAdmin != null && isAdmin){
+    %>
+     <a href="<%=request.getContextPath() %>/jsp/create_exercise.jsp" class="btn  add">+ Add Exercise </a>
+     <%
+    }else{
+     %>
+     <a href="<%=request.getContextPath() %>/jsp/myexercises.jsp" class="btn add">My Exercises </a>
+     <%
+    }
+     %>
     <!-- Part-1-->
     <a href="<%=request.getContextPath()%>/ExerciseCategoryServlet?category=FULLBODY" >
       <div class="workout-div">
