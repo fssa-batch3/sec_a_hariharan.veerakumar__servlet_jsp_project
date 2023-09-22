@@ -31,7 +31,6 @@ public class AssignUserExerciseServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		System.out.println("Servlet called");
          int exercise_id = Integer.parseInt(request.getParameter("id"));
          HttpSession session = request.getSession(false);
          String user_email =  (String) session.getAttribute("loggedInEmail");
