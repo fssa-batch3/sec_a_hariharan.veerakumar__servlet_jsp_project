@@ -67,7 +67,7 @@
      <%
     }else{
      %>
-     <a href="<%=request.getContextPath() %>/jsp/myexercises.jsp" class="btn add">My Exercises </a>
+     <a href="<%=request.getContextPath() %>/GetAllUserExerciseServlet" class="btn add">My Exercises </a>
      <%
     }
      %>
