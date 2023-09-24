@@ -43,7 +43,7 @@
 				id="navbarTogglerDemo01">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="<%=request.getContextPath()%>/pages/home.html"
+						href="<%=request.getContextPath()%>/index.jsp"
 						style="border-bottom: solid 3px #00FFFF;">HOME</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="<%=request.getContextPath()%>/jsp/home_workout.jsp">WORKOUT</a></li>

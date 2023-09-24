@@ -105,7 +105,7 @@ body {
 		<p id="foot-p">&#169; Copyrights Claimed by Hariharan</p>
 	</footer>
 
-
+<script src = "assets/js/new_index.js"></script>
 </body>
 
 </html>

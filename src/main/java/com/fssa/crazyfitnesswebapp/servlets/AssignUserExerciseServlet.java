@@ -45,16 +45,20 @@ public class AssignUserExerciseServlet extends HttpServlet {
 			int user_id = user.getUserId();	
 	         UserExercise userExercise =  new UserExercise(user_id,exercise_id,today,status); 
 			if(userExerciseService.createUserExercise(userExercise)) {
-				response.sendRedirect(request.getContextPath() + "/jsp/myexercises.jsp");
+				response.sendRedirect(request.getContextPath() + "/GetAllUserExerciseServlet");
 			}
 		} catch (ServiceException e) {
             e.printStackTrace();
-            String[] errormessage = e.getMessage().split(":");
-			// Send JavaScript code to display an alert
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert("+errormessage+");");
-			out.println("setTimeout(function() { window.location.href = '" + request.getContextPath() + "/jsp/home_workout.jsp'; }, 1000);"); // Delay for 1 second (1000 milliseconds)
-			out.println("</script>");
+           String[] errorMessage = e.getMessage().split(":");
+         // Send JavaScript code to display an alert
+         out.println("<script type=\"text/javascript\">");
+         if(e.getMessage().contains("Duplicate")) {
+        	 out.println("alert('You have already assigned this exercise for today ');");
+         }else {
+             out.println("alert('" +errorMessage[1]  + "');");
+         }
+         out.println("setTimeout(function() { window.location.href = '" + request.getContextPath() + "/jsp/home_workout.jsp'; }, 500);"); // Delay for 1 second (1000 milliseconds)
+         out.println("</script>");
 		}
 	}
 

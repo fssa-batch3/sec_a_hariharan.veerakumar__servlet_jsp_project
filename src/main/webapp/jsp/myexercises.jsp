@@ -53,9 +53,11 @@ tr {
 	cursor: pointer;
 	border-radius: 5px;
 }
-
+.button.planned {
+	background-color: #ec971f;	
+}
 .button.completed {
-	background-color: #ec971f;
+background-color: #5cb85c;	
 }
 
 .button.delete {
@@ -84,16 +86,16 @@ tr {
 		<tbody>
 			<c:forEach var="exercise" items="${assignedExercises}"
 				varStatus="loop">
-				<tr>
+				<tr >
 					<td>${loop.index + 1}</td>
 					<td>${exercise.exerciseDate}</td>
 					<td>${exercise.exerciseName}</td>
 					<td>${exercise.exerciseTimes}</td>
 
-					<td><a href="#" class="button">View Exercise</a> 
-					<a href="#"
-						class="button completed">${exercise.status}</a> 
-						<a href="#"
+					<td><a href="<%=request.getContextPath() %>/ViewExerciseServlet?id=${exercise.exerciseId}" class="button">View Exercise</a> 
+					<a href="<%=request.getContextPath() %>/UpdateUserExerciseServlet?status=${exercise.status}&id=${exercise.userExerciseId}"
+						class="button ${exercise.status == 'COMPLETED' ? 'completed' : 'planned'}">${exercise.status}</a> 
+						<a href="<%=request.getContextPath() %>/DeleteUserExerciseServlet?id=${exercise.userExerciseId}"
 						class="button delete">Delete</a></td>
 				</tr>
 			</c:forEach>

@@ -36,20 +36,20 @@
             <a class="nav-link" aria-current="page" href="<%=request.getContextPath()%>/index.jsp">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./../pages/Home_workout.html"
+            <a class="nav-link" href="<%=request.getContextPath()%>/jsp/home_workout.jsp"
               style="border-bottom: solid 3px #00FFFF;">WORKOUT</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/music.html">PLAYLIST</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/pages/music.html">PLAYLIST</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/Sales.html">EQ SALE</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/pages/Sales.html">EQ SALE</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/outfit.html">OUTFIT & SHOES</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/pages/outfit.html">OUTFIT & SHOES</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../pages/profile.html">PROFILE</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/pages/profile.html">PROFILE</a>
           </li>
     
         </ul>

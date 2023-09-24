@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		try {
-			if (email.equals("hari10@gmail.com") && password.equals("Haripassword@10")) {
+			if (email.equals("hari@gmail.com") && password.equals("Haripassword@10")) {
 				HttpSession adminSession = request.getSession();
 				adminSession.setAttribute("isAdmin", true);
 				// Send JavaScript code to display an alert

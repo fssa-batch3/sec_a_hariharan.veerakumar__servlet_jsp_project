@@ -41,7 +41,7 @@ public class CreateExerciseServlet extends HttpServlet {
 
 		try {
 			if (exerciseService.createExercise(exercise)) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/home_workout.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/ExerciseCategoryServlet?category="+category);
 				dispatcher.forward(request, response);
 			} 
 
@@ -49,7 +49,11 @@ public class CreateExerciseServlet extends HttpServlet {
 			e.printStackTrace();
 			String[] errorMessage = e.getMessage().split(":");
             request.setAttribute("ExerciseDetails", exercise);
-			request.setAttribute("errormessage", errorMessage[1]);
+            if(e.getMessage().contains("Duplicate")) {
+            	request.setAttribute("errormessage", "This exercise has already exists in this category");
+            }else {
+            	request.setAttribute("errormessage", errorMessage[1]);
+            }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/create_exercise.jsp");
             dispatcher.forward(request, response);
 		}

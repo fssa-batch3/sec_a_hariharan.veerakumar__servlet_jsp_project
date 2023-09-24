@@ -35,6 +35,7 @@ public class GetAllUserExerciseServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		PrintWriter out = response.getWriter();
 		List<UserExercise> userExercises = null;
 		List<AssignExercise> assignExercises = new ArrayList<>();
@@ -46,7 +47,7 @@ public class GetAllUserExerciseServlet extends HttpServlet {
         
 		try {
 			User user = userService.getUserbyEmail(userEmail);
-			userExercises = userExerciseService.getUserExerciseByUserId(user.getUserId());
+			userExercises = userExerciseService.getUserExercisesListByUserId(user.getUserId());
 			for (UserExercise userExercise : userExercises) {
 			    // Create a new AssignExercise object
 			    AssignExercise assignExercise = new AssignExercise();
@@ -77,7 +78,7 @@ public class GetAllUserExerciseServlet extends HttpServlet {
 		} catch (ServiceException e) {
 			e.printStackTrace();
 			out.println("<script type=\"text/javascript\">");
-			out.println("alert("+e.getMessage()+");");
+			out.println("alert('"+e.getMessage()+"');");
 			out.println("setTimeout(function() { window.location.href = '" + request.getContextPath() + "/jsp/login.jsp'; }, 1000);"); // Delay for 1 second (1000 milliseconds)
 			out.println("</script>");
 		}
