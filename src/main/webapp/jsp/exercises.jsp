@@ -16,12 +16,13 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/footer.css" />
-	  <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/header.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/assets/css/header.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/assets/css/mvp_content.css" />
 </head>
 <body>
-	 	<jsp:include page="../jsp/header.jsp"></jsp:include>
+	<jsp:include page="../jsp/header.jsp"></jsp:include>
 	<br />
 	<!-- searchbar -->
 	<div class="search">
@@ -55,39 +56,46 @@
 			</button>
 
 		</div>
-		
 
-		<!--  Card creation -->
-		<c:forEach var="exercise" items="${categorylist}">
-			<div class="div-1">
-				<div class="left">
-					<h2>
-						<c:out value='${exercise.exerciseName}' />
-					</h2>
-					<img src="<c:out value='${exercise.exerciseImage}' />"
-						alt="Exercise image" />
-					<p class="left-p">
-						x <c:out value='${exercise.exerciseTiming}' />
-					</p>
-					<p>
-						<c:out value='${exercise.exerciseSteps}' />
-					</p>	
-					<%
-					Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
-				    if(isAdmin != null && isAdmin){
-					%>	
-						<a href="<%=request.getContextPath() %>/UpdateExerciseServlet?id=<c:out value='${exercise.exerciseId}' />" class="btn btn-warning">Edit</a>
-					<%
-				    }else{
-					%>
-					<a href="<%=request.getContextPath() %>/AssignUserExerciseServlet?id=<c:out value='${exercise.exerciseId}' />" class="btn btn-primary">Assign</a>
-					<%
-					}
-					%>
-					<br />
+		<div class="flex-container">
+			<!--  Card creation -->
+			<c:forEach var="exercise" items="${categorylist}">
+				<div class="div-1">
+					<div class="left">
+						<h2>
+							<c:out value='${exercise.exerciseName}' />
+						</h2>
+						<img src="<c:out value='${exercise.exerciseImage}' />"
+							alt="Exercise image" />
+						<p class="left-p">
+							x
+							<c:out value='${exercise.exerciseTiming}' />
+						</p>
+						<p>
+							<c:out value='${exercise.exerciseSteps}' />
+						</p>
+						<%
+						Boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+						if (isAdmin != null && isAdmin) {
+						%>
+						<a
+							href="<%=request.getContextPath() %>/UpdateExerciseServlet?id=<c:out value='${exercise.exerciseId}' />"
+							class="btn btn-warning">Edit</a>
+						<%
+						} else {
+						%>
+						<a
+							href="<%=request.getContextPath() %>/AssignUserExerciseServlet?id=<c:out value='${exercise.exerciseId}' />"
+							class="btn btn-primary">Assign</a>
+						<%
+						}
+						%>
+						<br />
+						<br>
+					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
+		</div>
 	</section>
 	<br>
 	<br>
@@ -102,24 +110,29 @@
 		<p>CONNECT WITH ME</p>
 		<div class="foot-div">
 			<button class="btns">
-				<img src="<%=request.getContextPath() %>/assets/images/Facebook_logo.png" alt="facebook logo"
-					height="25" width="25" />
+				<img
+					src="<%=request.getContextPath()%>/assets/images/Facebook_logo.png"
+					alt="facebook logo" height="25" width="25" />
 			</button>
 			<button class="btns">
-				<img src="<%=request.getContextPath() %>/assets/images/Twitter_logo.png" alt="twitter logo"
-					height="25" width="25" />
+				<img
+					src="<%=request.getContextPath()%>/assets/images/Twitter_logo.png"
+					alt="twitter logo" height="25" width="25" />
 			</button>
 			<button class="btns">
-				<img src="<%=request.getContextPath() %>/assets/images/Linked_in_logo.png" alt="linked in logo"
-					height="25" width="25" />
+				<img
+					src="<%=request.getContextPath()%>/assets/images/Linked_in_logo.png"
+					alt="linked in logo" height="25" width="25" />
 			</button>
 			<button class="btns">
-				<img src="<%=request.getContextPath() %>/assets/images/Whatsapp_logo.png" alt="whatsapp logo"
-					height="25" width="25" />
+				<img
+					src="<%=request.getContextPath()%>/assets/images/Whatsapp_logo.png"
+					alt="whatsapp logo" height="25" width="25" />
 			</button>
 			<button class="btns">
-				<img src="<%=request.getContextPath() %>/assets/images/Instagram_logo.png" alt="Instagram logo"
-					height="25" width="25" />
+				<img
+					src="<%=request.getContextPath()%>/assets/images/Instagram_logo.png"
+					alt="Instagram logo" height="25" width="25" />
 			</button>
 		</div>
 		<p id="foot-p">&#169; Copyrights Claimed by Hariharan</p>
@@ -127,7 +140,6 @@
 	<!-- Java script -->
 	<script
 		src="<%=request.getContextPath()%>/assets/js/exercise_search.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/assets/js/scroll_feature.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/js/scroll_feature.js"></script>
 </body>
 </html>

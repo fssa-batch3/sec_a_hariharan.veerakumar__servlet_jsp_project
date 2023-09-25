@@ -1,17 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crazy Fitness</title>
-
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
-    <!-- Notify -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
-    <style>
+<meta charset="ISO-8859-1">
+<title>Profile</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+   <style>
         body {
             background-image: url(../assets/images/Profile_background.png);
             background-repeat: no-repeat;
@@ -336,9 +331,8 @@
         }
     </style>
 </head>
-
 <body>
-    <div class="container profile_div">
+ <div class="container profile_div">
         <br>
         <h1>Profile</h1>
         <br>
@@ -394,8 +388,9 @@
                 </div>
                 <!-- delete button -->
                 <div class="col">
-                    <a href="<%= request.getContextPath() %>/LogoutServlet" class="delete_btn"  id="delete">
+                         <a href="<%= request.getContextPath() %>/LogoutServlet" class="delete_btn"  id="delete">
                         <span class="a__text">Log out</span>
+                  
                         <span class="a__icon"><svg class="svg" height="512" viewBox="0 0 512 512" width="512"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <title></title>
@@ -417,7 +412,7 @@
                                     style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
                                     x1="328" x2="320" y1="176" y2="400"></line>
                             </svg></span>
-                    </a>
+                     </a>
                 </div>
 
         </form>
@@ -446,5 +441,4 @@
     <script src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"></script>
     <script src="../assets/js/profile_page.js"></script>
 </body>
-
 </html>

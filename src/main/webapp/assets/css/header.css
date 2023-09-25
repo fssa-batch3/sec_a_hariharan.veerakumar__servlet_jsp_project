@@ -199,9 +199,9 @@ margin-left: 30%;
   transform: translateY(-50%) rotate(-90deg);
 }
 .div_t-btn{
-  position: absolute;
-  width: fit-content;
-  height: fit-content;
-  margin-left: -10.5%;
-  margin-top: 36%;
+    position: fixed;
+    width: fit-content;
+    height: fit-content;
+    margin-left: -5.5%;
+    margin-top: 36%;
 }

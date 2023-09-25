@@ -17,7 +17,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <style>
 body {
-	background-color: #111  !important;
+	background-color: #11111  !important;
 }
 </style>
 </head>

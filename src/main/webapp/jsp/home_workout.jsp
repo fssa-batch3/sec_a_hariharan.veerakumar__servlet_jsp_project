@@ -49,7 +49,7 @@
             <a class="nav-link" href="<%=request.getContextPath()%>/pages/outfit.html">OUTFIT & SHOES</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<%=request.getContextPath()%>/pages/profile.html">PROFILE</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/jsp/profile_page.jsp">PROFILE</a>
           </li>
     
         </ul>

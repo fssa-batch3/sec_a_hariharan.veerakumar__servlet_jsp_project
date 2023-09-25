@@ -38,11 +38,10 @@ pro_info.addEventListener("submit", function (event) {
     let user_email = document.getElementById("email").value;
     let user_gender = document.getElementById("gender").value;
     let user_ph_num = document.getElementById("ph_number").value;
-    let user_address = document.getElementById("comment").value;
-    let per_info = document.getElementById("per_info").value;
+
 
     if (user_ph_num.length != 10) {
-        alert("Please! number must be 10 digits");
+        alert("Please! enter 10 digits number");
         return;
     }
     if (isNaN(user_age) || user_age < 1 || user_age > 100) {

@@ -39,10 +39,11 @@ public class RegisterServlet extends HttpServlet {
 
 		UserService userService = new UserService();
 		User user = new User(fname, lname, age, email, password, mobile_number);
-		HttpSession session = request.getSession();
+
 
 		try {
 			if (userService.registerUser(user)) {
+				HttpSession session = request.getSession();
 				session.setAttribute("loggedInEmail", email);
 				response.sendRedirect(request.getContextPath() + "/jsp/home_workout.jsp");
 			} else {

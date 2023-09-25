@@ -11,7 +11,6 @@ signUp.addEventListener("submit", function(event) {
 	let email = document.getElementById("email").value.trim();
 	let password = document.getElementById("password").value.trim();
 	let conpassword = document.getElementById("conpwd").value.trim();
-	let ph_num = document.getElementById("ph_num").value.trim();
 	//    let otp_btn = document.getElementById("otp_button");
 
 
@@ -54,10 +53,7 @@ signUp.addEventListener("submit", function(event) {
 	// password regex pattern and checking
 	const passwordPattern = "^[a-zA-Z0-9!@#$%^&*]{8,}$";
     const passwordMatches = password.match(passwordPattern);
-	if (ph_num.length != 10) {
-		Notify.error("Please enter 10 digits mobile number");
-		return;
-	}
+
 	if (isNaN(age) || age < 14 || age > 64) {
 		Notify.error("The age must be a number between 12 and 64");
 		return;
