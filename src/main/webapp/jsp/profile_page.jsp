@@ -2,13 +2,14 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+<%@ page import="com.fssa.crazyfitness.model.User"%>
 <head>
 <meta charset="ISO-8859-1">
 <title>Profile</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
    <style>
         body {
-            background-image: url(../assets/images/Profile_background.png);
+            background-image: url(<%=request.getContextPath()%>/assets/images/Profile_background.png);
             background-repeat: no-repeat;
             background-size: 100vw 100vh;
             color: aqua;
@@ -336,17 +337,26 @@
         <br>
         <h1>Profile</h1>
         <br>
-        <form id=" form">
+        <% User user = (User) request.getAttribute("editUser");
+        String gender;
+        if(user.getGender() != null){
+        	gender = user.getGender();
+        }else{
+        	gender = "";
+        }
+        
+        %>
+        <form id=" form" action="<%=request.getContextPath()%>/UpdateUserServlet" method="post">
             <div class="row">
                 <!-- first name -->
                 <div class="col">
                     <label for="fname" class="form_label">First Name :</label>
-                    <input type="text" id="fname" class="form-control" name="fname" required>
+                    <input type="text" id="fname" class="form-control" name="fname" required value="<%=user.getFname() %>">
                 </div>
                 <!-- last name -->
                 <div class="col">
                     <label for="lname" class="form_label">Last Name :</label>
-                    <input type="text" id="lname" class="form-control" name="lname" required>
+<input type="text" id="lname" class="form-control" name="lname" required value="<%=user.getLname() %>">
                 </div>
             </div><br><br><br>
             
@@ -354,16 +364,16 @@
             <div class="row">
                 <div class="col">
                     <label for="email" class="form_label">Email :</label>
-                    <input type="email" id="email" class="form-control" name="email" readonly required>
+                    <input type="email" id="email" class="form-control" name="email" readonly required value="<%=user.getEmail()%>">
                 </div>
                 <!-- gender -->
                 <div class="col">
                     <label for="Gender" class="form_label">Gender :</label>
-                    <select id="gender" class="form-control" >
-                        <option value=""></option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="others">Others</option>
+                    <select id="gender" name="gender" class="form-control" required>
+                        <option value="<%=gender %>"><%=gender %></option>
+                        <option value="male">male</option>
+                        <option value="female">female</option>
+                        <option value="others">others</option>
                     </select>
                 </div>
             </div>
@@ -372,14 +382,15 @@
             <div class="row">
                 <div class="col">
                     <label for="ph_number" class="form_label">Phone number :</label>
-                    <input type="tel" id="ph_number" class="form-control" name="ph_number" >
+                    <input type="tel" id="ph_number" class="form-control" value="<%=user.getPhone()%>" name="phone" >
                 </div>
                 <!-- age -->
                 <div class="col">
                     <label for="age" class="form_label">Age :</label>
-                    <input type="number" id="age" class="form-control" name="age" required>
+                    <input type="number" id="age" class="form-control" value="<%=user.getAge()%>" name="age" required>
                 </div>
             </div>
+            <input type="hidden" name="user_id" value="<%=user.getUserId()%>">
 <br><br>
             <!-- submit -->
             <div class="row">
@@ -424,7 +435,7 @@
         <!-- Back button -->
         <div class="row">
             <div class="col">
-                <a class="back_btn" href="./../jsp/home_workout.jsp">
+                <a class="back_btn" href="<%=request.getContextPath() %>/jsp/home_workout.jsp">
                     <span>
                         < GO BACK </span>
                             <div class="top"></div>

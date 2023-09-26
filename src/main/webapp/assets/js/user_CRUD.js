@@ -59,7 +59,7 @@ signUp.addEventListener("submit", function(event) {
 		return;
 	}
 	if (password != conpassword) {
-		Notify.error("Confirm password looks not similar to Password");
+		Notify.error("Confirm Password and Password doesn't match");
 		return;
 	}
 	if (!fnameMatches) {

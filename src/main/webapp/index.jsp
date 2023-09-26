@@ -9,7 +9,11 @@
 <title>CrazyFitness</title>
 <!-- Bootstrap  -->
 <link rel="stylesheet" href="assets/css/style.css" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/header.css" />
 <link rel="stylesheet" href="assets/css/footer.css" />
 
@@ -17,7 +21,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <style>
 body {
-	background-color: #11111  !important;
+	background-color: #11111 !important;
 }
 </style>
 </head>
@@ -61,17 +65,26 @@ body {
 			<h2
 				style="text-align: center; padding-top: 40px; font-size: 250%; font-family: sans-serif;">
 				<!-- quote -->
-				<q>Train Like a Beast,Look Like a Beauty.</q>
+				<q>Train Like a Beast, Look Like a Beauty.</q>
 			</h2>
+			<%
+			String email = (String) session.getAttribute("loggedInEmail");
+			if (email == null) {
+			%>
 			<!-- button -->
-			<a href="<%=request.getContextPath()%>/jsp/sign_in.jsp"><button class="sec-1-btn">
-					Home Workout &#128170</button></a> 
-				<!-- 	<a href="jsp/login.jsp"><button
-					class="sec-1-btn">Home Workout &#128170</button></a> -->
+			<a href="<%=request.getContextPath()%>/jsp/sign_in.jsp"><button
+					class="sec-1-btn">Home Workout &#128170</button></a>
+			<%
+			} else {
+			%>
+			<a href="<%=request.getContextPath()%>/jsp/home_workout.jsp"><button
+					class="sec-1-btn">Home Workout &#128170</button></a>
+			<%
+			}
+			%>
 			<!-- vedio -->
 
-			<img id="sec-1-gif" src="assets/images/GIF/intro.gif"
-				alt="intro-gif" />
+			<img id="sec-1-gif" src="assets/images/GIF/intro.gif" alt="intro-gif" />
 		</div>
 		<br>
 		<div id="manage_user_div"></div>
@@ -105,7 +118,7 @@ body {
 		<p id="foot-p">&#169; Copyrights Claimed by Hariharan</p>
 	</footer>
 
-<script src = "assets/js/new_index.js"></script>
+	<script src="assets/js/new_index.js"></script>
 </body>
 
 </html>

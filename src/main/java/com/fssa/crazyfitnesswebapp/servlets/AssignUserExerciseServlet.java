@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fssa.crazyfitness.model.Exercise;
 import com.fssa.crazyfitness.model.User;
 import com.fssa.crazyfitness.model.UserExercise;
 import com.fssa.crazyfitness.model.UserExerciseStatus;
+import com.fssa.crazyfitness.services.ExerciseService;
 import com.fssa.crazyfitness.services.UserExerciseService;
 import com.fssa.crazyfitness.services.UserService;
 import com.fssa.crazyfitness.services.exceptions.ServiceException;
@@ -32,10 +34,12 @@ public class AssignUserExerciseServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
          int exercise_id = Integer.parseInt(request.getParameter("id"));
+        
          HttpSession session = request.getSession(false);
          String user_email =  (String) session.getAttribute("loggedInEmail");
          UserService userService = new UserService();
          UserExerciseService userExerciseService = new UserExerciseService();
+         ExerciseService exerciseService = new ExerciseService();
          User user = new User();
 
  		UserExerciseStatus status = UserExerciseStatus.PLANNED;
@@ -44,8 +48,10 @@ public class AssignUserExerciseServlet extends HttpServlet {
 			user = userService.getUserbyEmail(user_email);
 			int user_id = user.getUserId();	
 	         UserExercise userExercise =  new UserExercise(user_id,exercise_id,today,status); 
+	         Exercise exerciseobj = exerciseService.getExerciseById(exercise_id);
+	         String category = exerciseobj.getExerciseCategory();
 			if(userExerciseService.createUserExercise(userExercise)) {
-				response.sendRedirect(request.getContextPath() + "/GetAllUserExerciseServlet");
+				response.sendRedirect(request.getContextPath() + "/ExerciseCategoryServlet?category="+category);
 			}
 		} catch (ServiceException e) {
             e.printStackTrace();
@@ -57,7 +63,7 @@ public class AssignUserExerciseServlet extends HttpServlet {
          }else {
              out.println("alert('" +errorMessage[1]  + "');");
          }
-         out.println("setTimeout(function() { window.location.href = '" + request.getContextPath() + "/jsp/home_workout.jsp'; }, 500);"); // Delay for 1 second (1000 milliseconds)
+         out.println("setTimeout(function() { window.location.href = '" + request.getContextPath() + "/jsp/home_workout.jsp'; }, 500);"); // Delay for 1 second (500 milliseconds)
          out.println("</script>");
 		}
 	}

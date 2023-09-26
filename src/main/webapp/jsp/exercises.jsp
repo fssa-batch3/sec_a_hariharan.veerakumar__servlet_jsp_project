@@ -86,7 +86,7 @@
 						%>
 						<a
 							href="<%=request.getContextPath() %>/AssignUserExerciseServlet?id=<c:out value='${exercise.exerciseId}' />"
-							class="btn btn-primary">Assign</a>
+							class="btn btn-primary">assign exercise</a>
 						<%
 						}
 						%>

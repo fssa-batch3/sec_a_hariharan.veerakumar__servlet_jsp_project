@@ -2,6 +2,7 @@ package com.fssa.crazyfitnesswebapp.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,51 +36,60 @@ public class GetAllUserExerciseServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		PrintWriter out = response.getWriter();
 		List<UserExercise> userExercises = null;
-		List<AssignExercise> assignExercises = new ArrayList<>();
 		UserExerciseService userExerciseService = new UserExerciseService();
 		UserService userService = new UserService();
 		HttpSession session = request.getSession(false);
 		String userEmail = (String) session.getAttribute("loggedInEmail");
 		ExerciseService exerciseService = new ExerciseService();
-        
+		LocalDate today = LocalDate.now();
+		List<AssignExercise> todayExercise = new ArrayList<>();
+		List<AssignExercise> previousExercises = new ArrayList<>();
 		try {
 			User user = userService.getUserbyEmail(userEmail);
 			userExercises = userExerciseService.getUserExercisesListByUserId(user.getUserId());
+
 			for (UserExercise userExercise : userExercises) {
-			    // Create a new AssignExercise object
-			    AssignExercise assignExercise = new AssignExercise();
+				// Create a new AssignExercise object
+				AssignExercise assignExercise = new AssignExercise();
+				LocalDate exerciseDate = userExercise.getExerciseDate();
 
-			    // Set common properties from UserExercise
-			    assignExercise.setUserExerciseId(userExercise.getUserExerciseId());
-			    assignExercise.setUserId(userExercise.getUserId());
-			    assignExercise.setExerciseId(userExercise.getExerciseId());
-			    assignExercise.setExerciseDate(userExercise.getExerciseDate());
-			    assignExercise.setStatus(userExercise.getStatus());
+				// Set common properties from UserExercise
+				assignExercise.setUserExerciseId(userExercise.getUserExerciseId());
+				assignExercise.setUserId(userExercise.getUserId());
+				assignExercise.setExerciseId(userExercise.getExerciseId());
+				assignExercise.setExerciseDate(userExercise.getExerciseDate());
+				assignExercise.setStatus(userExercise.getStatus());
 
-			    // Retrieve exercise details (exercise name and reps) by calling getExerciseById
-			    Exercise exercise = exerciseService.getExerciseById(userExercise.getExerciseId());
+				// Retrieve exercise details (exercise name and reps) by calling getExerciseById
+				Exercise exercise = exerciseService.getExerciseById(userExercise.getExerciseId());
 
-			    // Set exercise-specific properties
-			    if (exercise != null) {
-			        assignExercise.setExerciseName(exercise.getExerciseName());
-			        assignExercise.setExerciseTimes(exercise.getExerciseTiming());
-			    }
+				// Set exercise-specific properties
+				if (exercise != null) {
+					assignExercise.setExerciseName(exercise.getExerciseName());
+					assignExercise.setExerciseTimes(exercise.getExerciseTiming());
+				}
 
-			    // Add the AssignExercise object to the new list
-			    assignExercises.add(assignExercise);
+				// Add the AssignExercise object to the new lis
+				if (exerciseDate.isEqual(today)) {
+					todayExercise.add(assignExercise);
+				}else {
+					previousExercises.add(assignExercise);
+				}
 			}
-			
-			request.setAttribute("assignedExercises", assignExercises);
+
+			request.setAttribute("todayExercises", todayExercise);
+			request.setAttribute("previousExercise", previousExercises);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/myexercises.jsp");
 			dispatcher.forward(request, response);
 		} catch (ServiceException e) {
 			e.printStackTrace();
 			out.println("<script type=\"text/javascript\">");
-			out.println("alert('"+e.getMessage()+"');");
-			out.println("setTimeout(function() { window.location.href = '" + request.getContextPath() + "/jsp/login.jsp'; }, 1000);"); // Delay for 1 second (1000 milliseconds)
+			out.println("alert('" + e.getMessage() + "');");
+			out.println("setTimeout(function() { window.location.href = '" + request.getContextPath()
+					+ "/jsp/login.jsp'; }, 1000);"); // Delay for 1 second (1000 milliseconds)
 			out.println("</script>");
 		}
 
