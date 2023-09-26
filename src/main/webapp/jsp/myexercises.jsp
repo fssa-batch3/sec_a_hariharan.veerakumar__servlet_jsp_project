@@ -63,8 +63,9 @@ background-color: #5cb85c;
 .button.delete {
 	background-color: #f44336;
 }
-table{
-     display:none;
+h3{
+   margin-left:7%;
+   font-family:sans-serif;
 }
 </style>
 </head>
@@ -76,8 +77,10 @@ table{
 <br>
 
 	<c:if test="${not empty todayExercises}">
-	<h3>Today's Exercises</h3>
+
     <table class="container">
+    	<h3>Today's Exercises</h3>
+    	<br>
         <!-- Table headers -->
         		<thead>
 			<tr style="border: 2px solid #00FFFF;">
@@ -108,9 +111,10 @@ table{
         </tbody>
     </table>
 </c:if>
-	
+
 	<br>
 	<br>
+
 	<c:if test="${not empty previousExercise}">
     <table class="container">
     	<h3>Previous Exercises</h3>
