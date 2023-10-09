@@ -34,6 +34,9 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		UserService userService = new UserService();
 		HttpSession session = request.getSession(false);
+		if (session == null)
+			session = request.getSession(true);
+		
 
 		PrintWriter out = response.getWriter();
 
@@ -44,7 +47,8 @@ public class LoginServlet extends HttpServlet {
 				// Send JavaScript code to display an alert
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Welcome Admin!');");
-				out.println("setTimeout(function() { window.location.href = '" + request.getContextPath() + "/jsp/home_workout.jsp'; }, 1000);"); // Delay for 1 second (1000 milliseconds)
+				out.println("setTimeout(function() { window.location.href = '" + request.getContextPath()
+						+ "/jsp/home_workout.jsp'; }, 1000);"); // Delay for 1 second (1000 milliseconds)
 				out.println("</script>");
 			} else {
 				if (userService.login(email, password)) {
